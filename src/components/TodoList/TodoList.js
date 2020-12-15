@@ -22,26 +22,22 @@ const TodoList = () => {
     return () => unsubscribe()
   }, [])
 
-  // const filter = (tasks) => {
-  //   if (!store) {
-  //     console.log(store)
-  //     return
-  //   }
-  //   if (store.filter === 'all') {
-  //     return tasks
-  //   }
-  //   if (store.filter === 'active') {
-  //     return tasks.filter(({ status }) => !status.done)
-  //   }
-  //   if (store.filter === 'done') {
-  //     return tasks.filter(({ status }) => status.done)
-  //   }
-  //   if (store.query && store.query.length > 0) {
-  //     return tasks.filter((item) => {
-  //       return item.text.toLowerCase().indexOf(store.query.toLowerCase()) > -1
-  //     })
-  //   }
-  // }
+  const filter = (tasks) => {
+    if (store.filter === 'all') {
+      return tasks
+    }
+    if (store.filter === 'active') {
+      return tasks.filter(({ status }) => !status.done)
+    }
+    if (store.filter === 'done') {
+      return tasks.filter(({ status }) => status.done)
+    }
+    if (store.query && store.query.length > 0) {
+      return tasks.filter((item) => {
+        return item.text.toLowerCase().indexOf(store.query.toLowerCase()) > -1
+      })
+    }
+  }
 
   return (
     <List
@@ -51,11 +47,8 @@ const TodoList = () => {
           ? { overflowY: 'scroll', maxHeight: '700px' }
           : {}
       }
-      // dataSource={filter(
-      //   firebaseTasks.sort((a, b) => b.status.pinned - a.status.pinned)
-      // )}
-      dataSource={firebaseTasks.sort(
-        (a, b) => b.status.pinned - a.status.pinned
+      dataSource={filter(
+        firebaseTasks.sort((a, b) => b.status.pinned - a.status.pinned)
       )}
       renderItem={(item) => <TodoListItem {...item} />}
     />

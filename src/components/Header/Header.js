@@ -26,25 +26,16 @@ const Header = () => {
   const doneTasks = firebaseTasks.filter(({ status }) => status.done)
 
   return (
-    <>
-      <Row>
-        <Col flex="auto" align="center">
-          <Title>Todo List</Title>
-        </Col>
-      </Row>
-      <Row>
-        <Col flex="auto">
-          <Title level={4}>
-            <Text>
-              {doneTasks.length} from {firebaseTasks.length} are done
-            </Text>
-          </Title>
-        </Col>
-        <Col flex="none">
-          <Filter />
-        </Col>
-      </Row>
-    </>
+    <Row>
+      <Col flex="auto">
+        <Title level={4}>
+          {doneTasks.length} from {firebaseTasks.length} are done
+        </Title>
+      </Col>
+      <Col flex="none">
+        <Filter />
+      </Col>
+    </Row>
   )
 }
 

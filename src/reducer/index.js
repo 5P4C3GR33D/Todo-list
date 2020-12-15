@@ -5,6 +5,8 @@ const ref = db.collection('tasks')
 
 const rootReducer = (state, action) => {
   switch (action.type) {
+    case 'REGISTER':
+      return
     case 'ADD_TODO':
       const document = ref.doc().id
       ref.doc(document).set({
@@ -17,10 +19,10 @@ const rootReducer = (state, action) => {
           pinned: false
         }
       })
-      return
+      return state
     case 'DELETE_TODO': {
       ref.doc(action.payload).delete()
-      return
+      return state
     }
     case 'SET_DONE':
       ref.doc(action.payload.id).update({
@@ -29,7 +31,7 @@ const rootReducer = (state, action) => {
           done: !action.payload.status.done
         }
       })
-      return
+      return state
     case 'IMPORTANT_TODO':
       ref.doc(action.payload.id).update({
         status: {
@@ -37,7 +39,7 @@ const rootReducer = (state, action) => {
           important: !action.payload.status.important
         }
       })
-      return
+      return state
     case 'PINNED_TODO':
       ref.doc(action.payload.id).update({
         status: {
@@ -45,7 +47,7 @@ const rootReducer = (state, action) => {
           pinned: !action.payload.status.pinned
         }
       })
-      return
+      return state
     case 'CHANGE_FILTER':
       return {
         ...state,
