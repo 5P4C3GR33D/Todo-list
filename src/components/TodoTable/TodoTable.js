@@ -1,8 +1,8 @@
 import { Table, Typography } from 'antd'
-import firebase from '../../config'
+import fire from '../../config'
 import { useEffect, useState } from 'react'
 
-const db = firebase.firestore()
+const db = fire.firestore()
 const ref = db.collection('tasks')
 
 const columns = [

@@ -1,12 +1,21 @@
-import { Row, Col } from 'antd'
-import { Filter } from './Filter'
-import { Search } from './Search'
-import { AddTodo } from './AddTodo'
-import { TodoList } from './TodoList'
+import { Row, Col, Button } from 'antd'
+import { Filter } from '../../components/Filter'
+import { Search } from '../../components/Search'
+import { AddTodo } from '../../components/AddTodo'
+import { TodoList } from '../../components/TodoList'
+import fire from '../../config'
 
 const Dashboard = () => {
   return (
     <>
+      <Button
+        type="danger"
+        onClick={() => {
+          fire.auth().signOut()
+          //console.log('Signed out')
+        }}>
+        Sign out
+      </Button>
       <Row gutter={[0, 8]}>
         <Col style={{ width: '100%' }}>
           <Filter />

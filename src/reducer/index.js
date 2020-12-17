@@ -1,16 +1,24 @@
-import firebase from '../config'
+import fire from '../config'
 
-const db = firebase.firestore()
+const db = fire.firestore()
 const ref = db.collection('tasks')
+const userRef = db.collection('users')
 
 const rootReducer = (state, action) => {
   switch (action.type) {
     case 'REGISTER':
-      return
+      const documentUser = userRef.doc().id
+      userRef.doc(documentUser).set({
+        id: documentUser,
+        email: action.payload.mail,
+        password: action.payload.pass
+      })
+      return state
     case 'ADD_TODO':
-      const document = ref.doc().id
-      ref.doc(document).set({
-        id: document,
+      const documentTask = ref.doc().id
+      ref.doc(documentTask).set({
+        id: documentTask,
+        userID: documentUser,
         text: action.payload,
         creationDate: new Date(),
         status: {

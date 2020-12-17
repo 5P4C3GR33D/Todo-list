@@ -2,9 +2,9 @@ import { List } from 'antd'
 import { TodoListItem } from '../TodoListItem'
 import { useEffect, useState } from 'react'
 import { useStoreContext } from 'context'
-import firebase from '../../config'
+import fire from '../../config'
 
-const db = firebase.firestore()
+const db = fire.firestore()
 const ref = db.collection('tasks')
 
 const TodoList = () => {

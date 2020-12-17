@@ -1,9 +1,6 @@
 import 'antd/dist/antd.css'
-import Login from './login'
-import Recovery from './recovery'
-import Dashboard from './dashboard'
-import Registration from './registration'
 import { Row, Col, Typography } from 'antd'
+import { Login, Recovery, Dashboard, Registration } from '../roots'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 const App = () => {
@@ -20,7 +17,7 @@ const App = () => {
             <Router>
               <Switch>
                 <Route exact path="/">
-                  <Login />
+                  <Dashboard />
                 </Route>
                 <Route exact path="/login">
                   <Login />

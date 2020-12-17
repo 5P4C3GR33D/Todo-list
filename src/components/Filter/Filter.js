@@ -1,4 +1,4 @@
-import firebase from '../../config'
+import fire from '../../config'
 import { useEffect, useState } from 'react'
 import { useStoreContext } from 'context'
 import { Row, Col, Button, Typography } from 'antd'
@@ -15,7 +15,7 @@ const Filter = () => {
   const [activeButton, setActiveButton] = useState(buttons[0].text)
 
   useEffect(() => {
-    const unsubscribe = firebase
+    const unsubscribe = fire
       .firestore()
       .collection('tasks')
       .orderBy('creationDate')

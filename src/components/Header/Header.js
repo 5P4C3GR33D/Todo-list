@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Col, Row, Typography } from 'antd'
 import { Filter } from 'components/Filter'
-import firebase from '../../config'
+import fire from '../../config'
 
 const { Title, Text } = Typography
 
@@ -9,7 +9,7 @@ const Header = () => {
   const [firebaseTasks, setFirebaseTasks] = useState([])
 
   useEffect(() => {
-    const unsubscribe = firebase
+    const unsubscribe = fire
       .firestore()
       .collection('tasks')
       .orderBy('creationDate')

@@ -1,3 +1,3 @@
-import firebase from './firebaseConfig'
+import fire from './firebaseConfig'
 
-export default firebase
+export default fire
